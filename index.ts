@@ -21,6 +21,7 @@ APP.use(cookieParser());
 APP.use(cors({
   origin: 'https://imrxng.github.io',
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
 }));
 
 APP.set('port', process.env.PORT ?? 3000);
