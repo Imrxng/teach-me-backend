@@ -12,8 +12,8 @@ dotenv.config();
 // Initialiseer express app
 const APP: Express = express();
 // Bereken __dirname en __filename
-const __filename = path.join(process.cwd(), 'api', 'index.ts');
-const __dirname = path.dirname(__filename);
+// const __filename = path.join(process.cwd(), 'api', 'index.ts');
+// const __dirname = path.dirname(__filename);
 
 // Stel view-engine en views directory in
 APP.set('view engine', 'ejs');
