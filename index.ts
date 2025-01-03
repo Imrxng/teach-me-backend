@@ -19,7 +19,7 @@ APP.use(express.urlencoded({ limit: '10mb', parameterLimit: 50, extended: true }
 APP.use(express.static(path.join(__dirname, 'public')));
 APP.use(cookieParser());
 APP.use(cors({
-  origin: 'https://imrxng.github.io/teach-me-ui/',
+  origin: 'https://imrxng.github.io',
   credentials: true,
 }));
 
