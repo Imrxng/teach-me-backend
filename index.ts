@@ -20,8 +20,7 @@ APP.use(express.static(path.join(__dirname, 'public')));
 APP.use(cookieParser());
 APP.use(cors({
   origin: 'https://imrxng.github.io',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true
 }));
 
 APP.set('port', process.env.PORT ?? 3000);
@@ -36,6 +35,14 @@ APP.use(async (req, res, next) => {
     console.error('Databaseverbinding mislukt:', error);
     res.status(500).send('Databaseverbinding mislukt');
   }
+});
+
+APP.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://imrxng.github.io');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
 });
 
 APP.use((req, res) => {
