@@ -19,7 +19,7 @@ APP.use(express.urlencoded({ limit: '10mb', parameterLimit: 50, extended: true }
 APP.use(express.static(path.join(__dirname, 'public')));
 APP.use(cookieParser());
 APP.use(cors({
-  origin: 'https://teach-me-backend.vercel.app',
+  origin: 'https://imrxng.github.io/teach-me-ui/',
   credentials: true,
 }));
 
