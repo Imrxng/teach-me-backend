@@ -16,7 +16,8 @@ LOGIN.post('/login', async (request, response) => {
     
 			response.cookie('session', token, {
 				secure: true,
-				sameSite: 'strict',
+				httpOnly: true,
+				sameSite: 'none',
 				maxAge: 12 * 60 * 60 * 1000 
 			});
 			response.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
