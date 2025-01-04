@@ -156,7 +156,7 @@ export const getAllUserNames = async (): Promise<string[]> => {
 };
 
 
-const dbURI = process.env.MONGODB_URI;
+const dbURI = process.env.MONGODB_URI ?? "";
 
 export const connectDB = async () => {
     try {
