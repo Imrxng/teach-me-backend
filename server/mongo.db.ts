@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
-import { ICourse, IUser } from '../models/course.types';
+import { ICourse, ICourseRequestPost, IUser } from '../models/course.types';
 
 
 
@@ -59,14 +59,15 @@ export const deleteCourse = async (courseKey: string): Promise<void> => {
     }
 };
 
-export const modifyCourse = async (course: ICourse): Promise<void> => {
+export const modifyCourse = async (course: ICourseRequestPost): Promise<void> => {
     const updatedCourse = await CourseModel.findOneAndUpdate(
-        { key: course.key },
-        { content: course.content },
-        { new: true }
+        { "content.id": course.id }, 
+        { $set: { "content.$": course } }, 
+        { new: true } 
     );
+    
     if (!updatedCourse) {
-        const ERROR = new Error(`Error: Course "${course.key}" does not exist`);
+        const ERROR = new Error(`Error: Course "${course.name}" does not exist`);
         ERROR.name = '404';
         throw ERROR;
     }
