@@ -4,7 +4,7 @@ import * as jwt from 'jsonwebtoken';
 
 const LOGIN_SESSION = express.Router();
 
-function validateToken(token: string) {
+export function validateToken(token: string) {
 	if (!token) {
 		const error = new Error('Error: User not logged in.');
 		error.name = '301';

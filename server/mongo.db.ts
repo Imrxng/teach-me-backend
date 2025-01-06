@@ -1,7 +1,9 @@
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import { ICourse, ICourseRequestPost, IUser } from '../models/course.types';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 
 const CourseModel = mongoose.model<ICourse>('Course', new mongoose.Schema({

@@ -1,10 +1,11 @@
 import express from 'express';
 import { getCoursesTitles } from '../server/mongo.db';
 import { handleError } from '../functions/handleError';
+import { verifyAuthToken } from '../middleware/middleware';
 
 const GET_COURSES_TITLES_ROUTER = express.Router();
 
-GET_COURSES_TITLES_ROUTER.get('/get-course-titles', async (request, response) => {
+GET_COURSES_TITLES_ROUTER.get('/get-course-titles', verifyAuthToken ,async (request, response) => {
 	try {
 		const COURSE_TITLES: string[] = await getCoursesTitles();
 		response.type('json');

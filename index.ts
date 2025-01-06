@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import APIROUTER from './routers/api';
 import { connectDB } from './server/mongo.db';
+import { verifyAuthToken } from './middleware/middleware';
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ APP.use(cors({
   }
 })();
 
+APP.use(verifyAuthToken);
 APP.use('/api', APIROUTER);
 
 APP.use((req, res) => {
